@@ -1031,6 +1031,25 @@ div.notiTabDiv{
 	padding-bottom: 10px;
 }
 
+.notiTablesDivParent{
+	position: relative;
+}
+
+.countSpan{
+	position: absolute;
+	top: -10px;
+	right: 12px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	padding-top: -6px;
+	font-size: 12px;
+	padding: 4px;
+	background-color: red;
+	color: white;
+	border-radius: 100%;
+}
+
 .notiTables{
 	border: 1px solid #fff;
 	width: 90%;

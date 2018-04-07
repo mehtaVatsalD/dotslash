@@ -37,7 +37,7 @@ $uname=$_SESSION["userLogged"];
 								echo "
 								<tr>
 									<td style=\"font-size:20px;\"><span style=\"margin:20px;\">$from</span></td>
-									<td><form method=\"post\" action=\"chat.php\">
+									<td><form method=\"get\" action=\"chat.php\">
 										<input type='hidden' name='chatWith' value='$from'>
 										<input type='submit' class='btn btn-success' value='Chat with Buyer' name='chat'>
 										</form></td>

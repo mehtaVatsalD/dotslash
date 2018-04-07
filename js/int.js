@@ -182,3 +182,19 @@ function handleHeight(textarea,height){
   textarea.style.height=height+'px';
   textarea.style.height=((height/2)+textarea.scrollHeight)+'px';
 }
+
+var unloaded = false;
+$(window).on('unload', unload);  
+function unload(){    
+  if(!unloaded){
+    $('body').css('cursor','wait');
+    $.ajax({
+      type: 'post',
+      url: 'logOut.php',
+      success:function(){ 
+        unloaded = true; 
+      },
+      timeout: 5000
+    });
+  }
+}

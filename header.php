@@ -50,13 +50,14 @@ if (isset($_SESSION['userLogged'])) {
 <div class="dropParent"></div>
 <div class="notiTabDiv">
 	<?php
-
+		if (isset($_SESSION['userLogged'])) {
 		while($notification=mysqli_fetch_assoc($notifications))
 		{
 			$minTime=$notification['time'];
 			$notify=$notification['notify'];
 			$notifier=$notification['notifier'];
 			$category=$notification['category'];
+			$count=$notification['count'];
 			if($category=="chat")
 			{
 				$locationToGo='chat.php?chatWith='.$notifier.'&chat=Chat+with+Seller';
@@ -70,23 +71,33 @@ if (isset($_SESSION['userLogged'])) {
 			{
 				$totalNoti++;
 				$notiTables.="
-				<table onclick=\"location.href='$locationToGo'\" class='notiTables unread'>
+				<div class=\"notiTablesDivParent\"><table onclick=\"location.href='$locationToGo'\" class='notiTables unread'>
 					<tr>
-						<td><img src='propics/$propicNot'></td>
+						<td><img src='propics/$propicNot'>";
+				if($count>1)
+				{
+					$notiTables.="<span class=\"countSpan\" >$count</span>";
+				}
+				$notiTables.="</td>
 						<td class=\"notText\">$notificationText</td>
-					</tr>
-				</table>
-				";
+							</tr>
+						</table></div>
+						";
 			}
 			else
 			{
 				$notiTables.="
-				<table onclick=\"location.href='$locationToGo'\" class=\"notiTables\">
+				<div class=\"notiTablesDivParent\"><table onclick=\"location.href='$locationToGo'\" class=\"notiTables\">
 					<tr>
-						<td><img src='propics/$propicNot'></td>
+						<td><img src='propics/$propicNot'>";
+						if($count>1)
+						{
+							$notiTables.="<span class=\"countSpan\" >$count</span>";
+						}
+					$notiTables.="</td>
 						<td class=\"notText\">$notificationText</td>
 					</tr>
-				</table>
+				</table></div>
 				";
 			}
 		}
@@ -99,6 +110,7 @@ if (isset($_SESSION['userLogged'])) {
 			$bellIcon="<i id=\"notiBell\" onclick=\"readAllNoti()\" class=\"fa fa-bell\">$totalNoti</i>";
 		}
 		echo "$notiTables";
+	}
 	?>
 </div>
 <div class="drop">

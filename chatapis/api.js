@@ -24,6 +24,7 @@ function sendMsg(from,to) {
       tr.appendChild(td);
 
       chatTable.appendChild(tr);
+      console.log(this.responseText);
     }
   };
   xhttp.open("POST", "ajax/sendMsg.php", true);

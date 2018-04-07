@@ -1,10 +1,6 @@
 <?php
 session_start();
 include_once('dbconfig.php');
-if (isset($_POST['logoutBtn'])) {
-	setcookie('userLogged','',time()-60);
-	header('Location:index.php');
-}
 ?>
 <!DOCTYPE html>
 <html>
