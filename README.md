@@ -1,2 +1,3 @@
-# dotslash
-Team Name : Bro Coders
+BroCoders
+# TradIn
+Online Buying and Selling Website for SVNIT

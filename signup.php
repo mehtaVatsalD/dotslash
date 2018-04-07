@@ -59,7 +59,7 @@ if (isset($_POST['signupSubmit'])) {
 		$_SESSION['notVerified']="notVerified";
 		// $_SESSION['login']=$uname;
 		$verified=$verifyPass;
-		mysqli_query($dbase,"INSERT INTO `users` VALUES ('$fname','$lname','$email','$mobno','$uname','$pass','$name','$verified')");
+		mysqli_query($dbase,"INSERT INTO `users` VALUES ('$fname','$lname','$email','$mobno','$uname','$pass','$name','$verified','0')");
 		header('Location:verifyMail.php');
 	}
 		

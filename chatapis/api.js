@@ -1,6 +1,7 @@
 function sendMsg(from,to) {
 	var chatTable = document.getElementsByClassName('chatTable')[0];
 	var textToSend=document.getElementById('chatTextArea').value;
+	document.getElementById('chatTextArea').value="";
 	textToSend=textToSend;
 	var time = new Date();
 	time=time.getTime();

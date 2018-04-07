@@ -26,7 +26,7 @@ include_once('dbconfig.php');
 		<div class="rowp" id="buyRowMob">
 			<div class="icont">
 				<div class="col-3 col-sl-12 imgBoxc">
-					<a href=""><img src="images/study-material.jpg" class="buyimg3"><br><span class="buyNames">BOOKS</span></a>
+					<a href="add.php?val=Book"><img src="images/study-material.jpg" class="buyimg3"><br><span class="buyNames">BOOKS</span></a>
 				</div>
 				<div class="col-3 col-sl-12 imgBoxc">
 					<a href=""><img src="images/drawins.png" class="buyimg3"><br><span class="buyNames">DRAWING INSTRUMENTS</span></a>

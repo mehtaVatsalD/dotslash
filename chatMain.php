@@ -7,14 +7,8 @@ if(isset($_SESSION['notVerified']))
 if (!isset($_SESSION['userLogged'])) {
 	header('Location:login.php');
 }
-if(!isset($_POST['chat']))
-{
-	header('Location:index.php');
-}
 include_once('dbconfig.php');
 $uname=$_SESSION["userLogged"];
-$_SESSION['chatWith']=$_POST['chatWith'];
-$chatWith=$_SESSION['chatWith'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,27 +21,26 @@ $chatWith=$_SESSION['chatWith'];
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobtab.css">
 </head>
-<body onload="loadChats('<?php echo $chatWith; ?>','<?php echo $uname; ?>')">
+<body onload="">
 	<div class="containerp">
 		<?php include_once('header.php'); ?>
 		<div class="rowp">
 			<div class="icont">
 				<div id="sellBox">
 					<div id="sellWordDiv"><span id="sellWord">Chat</span></div>
-					<table id="sellTable" class="chatTable" style="width: 90%;">
-						
-					</table>
 					<table id="sellTable" style="width: 90%;">
-						<tr>
-							<td>
-								<textarea id="chatTextArea" onkeyup="handleHeight(this,30)"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<button onclick="sendMsg('<?php echo $uname ?>','<?php echo $chatWith ?>')" class="btn btn-success" style="margin-bottom: 20px;">Send</button>
-							</td>
-						</tr>
+						<?php
+							$myChats = mysqli_query($dbase,"SELECT DISTINCT `msgfrom` FROM `chats`");
+							while($myChat=mysqli_fetch_assoc($myChats))
+							{
+								$from=$myChat["msgfrom"];
+								echo "
+								<tr>
+									<td></td>
+								</tr>
+								";
+							}
+						?>
 					</table>
 					
 				</div>

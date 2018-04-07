@@ -446,6 +446,18 @@ a{
 	box-shadow: 0px 0px 10px #a1a1a1;
 }
 
+#addBox{
+	width: 80%;
+	/*max-height: 185vh;*/
+	height: fit-content;
+	border-radius: 10px;
+	background-color: #f1f2f4;
+	margin: 0 auto;
+	margin-top: 10vh;
+	margin-bottom: 10vh;
+	box-shadow: 0px 0px 10px #a1a1a1;
+}
+
 #sellWordDiv{
 	width: 100%;
 	background-color: #1DA1F1;
@@ -973,7 +985,7 @@ div.drop ul{
 	content: " ";
 	position: absolute;
 	top: 20%;
-	left: -17%;
+	right: 100%;
 	border-width: 7px;
 	border-style: solid;
 	border-color:transparent #645ced transparent transparent;

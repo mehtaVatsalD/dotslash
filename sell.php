@@ -8,7 +8,24 @@ if (!isset($_SESSION['userLogged'])) {
 	header('Location:login.php');
 }
 include_once('dbconfig.php');
+//jasmin nasit
+
+if(isset($_POST['subbtn'])){
+	$uname=$_SESSION['userLogged'];
+	$iname=$_POST['iname'];
+	$itype=$_POST['itype'];
+	$des=$_POST['description'];
+	$price=$_POST['price'];
+	$address=$_POST['address'];
+	$amobno=$_POST['amobno'];
+    mysqli_query($dbase,"INSERT INTO sell(`uname`,`itype`,`description`,`price`,`address`,`altmono`,`iname`) VALUES('$uname','$itype','$des','$price','$address','$amobno','$iname')");
+    header('Location:buy.php?flag=1');
+    }
+
+
+//jasmin nasit
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +36,7 @@ include_once('dbconfig.php');
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobtab.css">
+	<link rel="stylesheet" type="text/css" href="css/jasmin.css">
 </head>
 <body>
 	<div class="containerp">
@@ -27,7 +45,7 @@ include_once('dbconfig.php');
 			<div class="icont">
 				<div id="sellBox">
 					<div id="sellWordDiv"><span id="sellWord">Sell</span></div>
-					<form name="sell">
+					<form name="sell" method="POST" action="sell.php">
 						<table id="sellTable">
 							<tr>
 								<td colspan="2"><p class="formRemark"><span class="starImp">*</span> Denotes Mandatory Fields</p></td>
@@ -40,14 +58,14 @@ include_once('dbconfig.php');
 								<td class="signTd"><label for="itype" class="slabels">Item Type<span class="starImp">*</span> :</label></td>
 								<td>
 									<span class="starImpm">*</span>
-									<select class="signupips">
-											<option>Book</option>
-											<option>Drawing Instrument</option>
-											<option>Musical Instrument</option>
-											<option>Electronic Gadget</option>
-											<option>Cycle</option>
-											<option>Lab Equipment</option>
-											<option>Other</option>
+									<select class="signupips" name="itype">
+											<option value="Book">Book</option>
+											<option value="Drawing Instrument">Drawing Instrument</option>
+											<option value="Musical Instrument">Musical Instrument</option>
+											<option value="Electronic Gadget">Electronic Gadget</option>
+											<option value="Cycle">Cycle</option>
+											<option value="Lab Equipment">Lab Equipment</option>
+											<option >Other</option>
 									</select>
 								</td>
 							</tr>
@@ -55,7 +73,7 @@ include_once('dbconfig.php');
 								<td class="signTd"><label for="description" class="slabels">Description<span class="starImp">*</span> :</label></td>
 								<td>
 									<p style="color: #607d8b;"><span class="starImpm">*</span>Description:</p>
-									<textarea class="tadesign" cols="20" rows="5"></textarea>
+									<textarea class="tadesign" name="description" cols="20" rows="5"></textarea>
 								</td>
 							</tr>
 							<tr>
@@ -66,7 +84,7 @@ include_once('dbconfig.php');
 								<td class="signTd"><label for="address" class="slabels">Address :</label></td>
 								<td>
 									<p style="color: #607d8b;">Address:</p>
-									<textarea class="tadesign" cols="20" rows="5"></textarea>
+									<textarea class="tadesign" name="address" cols="20" rows="5"></textarea>
 								</td>
 							</tr>
 							<tr>
@@ -79,13 +97,14 @@ include_once('dbconfig.php');
 									<p style="color: #607d8b;"><span class="starImpm">*</span>Upload Pictures</p>
 									<div class="uploadDivSell btn btn-info">
     									<span class="plus"><i class="fa fa-plus"></i></span>
-    									<input type="file" accept=".jpg,.jpeg,.png" class="sellPics" name="sellpics" onchange="uploadImgSell(this)" />
+    									<input type="file" accept=".jpg,.jpeg,.png" class="sellPics" name="sellpics0" onchange="uploadImgSell(this)" multiple/>
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<input type="submit" class="btn btn-primary" value="POST" id="signupBtn">
+									<input type="submit" class="btn btn-primary" name="subbtn" value="POST" id="signupBtn">
+									
 								</td>
 							</tr>
 						</table>
