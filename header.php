@@ -13,10 +13,12 @@
 				}
 			?>
 			<!-- activeMenumob -->
-			<li class="mobmenuli" onclick="location.href='buy.php'"><i class="fa fa-shopping-cart"></i>BUY</li>
-			<li class="mobmenuli" onclick="location.href='sell.php'"><i class="fa fa fa-handshake-o"></i>SELL</li>
-			<li class="mobmenuli" onclick="location.href='aboutus.php'"><i class="fa fa fa-certificate"></i>ABOUT</li>
-			<li class="mobmenuli" onclick="location.href='contactus.php'"><i class="fa fa fa-envelope"></i>CONTACT US</li>
+			<li class="mobmenuli" onclick="location.href='buy.php'"><i class="fa fa-shopping-cart"></i>&nbsp;BUY</li>
+			<li class="mobmenuli" onclick="location.href='sell.php'"><i class="fa fa fa-handshake-o"></i>&nbsp;SELL</li>
+			<li class="mobmenuli" onclick="location.href='chatMain.php'"><i class="fa fa fa-comments"></i>&nbsp;CHATS</li>
+			<li class="mobmenuli" onclick="location.href='aboutus.php'"><i class="fa fa fa-certificate"></i>&nbsp;ABOUT</li>
+			<li class="mobmenuli" onclick="location.href='contactus.php'"><i class="fa fa fa-envelope"></i>&nbsp;CONTACT US</li>
+
 		</ul>
 	</div>
 </div>
@@ -72,6 +74,7 @@ if (isset($_SESSION['userLogged'])) {
 				?>
 				<li class="menuli" onclick="location.href='buy.php'">BUY</li>
 				<li class="menuli" onclick="location.href='sell.php'">SELL</li>
+				<li class="menuli" onclick="location.href='chatMain.php'">CHATS</li>
 				<li class="menuli" onclick="location.href='aboutus.php'">ABOUT&nbsp;US</li>
 				<li class="menuli" onclick="location.href='contactus.php'">CONTACT&nbsp;US</li>
 			</ul>

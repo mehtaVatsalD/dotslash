@@ -13,8 +13,11 @@ if(!isset($_POST['chat']))
 }
 include_once('dbconfig.php');
 $uname=$_SESSION["userLogged"];
+if($uname==$_POST['chatWith'])
+	 header("Location: {$_SERVER['HTTP_REFERER']}");
 $_SESSION['chatWith']=$_POST['chatWith'];
 $chatWith=$_SESSION['chatWith'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +36,7 @@ $chatWith=$_SESSION['chatWith'];
 		<div class="rowp">
 			<div class="icont">
 				<div id="sellBox">
-					<div id="sellWordDiv"><span id="sellWord">Chat</span></div>
+					<div id="sellWordDiv"><span id="sellWord">Chat With <?php echo $chatWith ?></span></div>
 					<table id="sellTable" class="chatTable" style="width: 90%;">
 						
 					</table>

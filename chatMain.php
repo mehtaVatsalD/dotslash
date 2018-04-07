@@ -27,16 +27,20 @@ $uname=$_SESSION["userLogged"];
 		<div class="rowp">
 			<div class="icont">
 				<div id="sellBox">
-					<div id="sellWordDiv"><span id="sellWord">Chat</span></div>
-					<table id="sellTable" style="width: 90%;">
+					<div id="sellWordDiv"><span id="sellWord">Recent Chats</span></div>
+					<table id="sellTable" style="margin-bottom: 20px; " style="width: 90%;">
 						<?php
-							$myChats = mysqli_query($dbase,"SELECT DISTINCT `msgfrom` FROM `chats`");
+							$myChats = mysqli_query($dbase,"SELECT DISTINCT `msgfrom` FROM `chats` WHERE `msgfrom`<>'$uname' ORDER BY `time` DESC");
 							while($myChat=mysqli_fetch_assoc($myChats))
 							{
 								$from=$myChat["msgfrom"];
 								echo "
 								<tr>
-									<td></td>
+									<td style=\"font-size:20px;\"><span style=\"margin:20px;\">$from</span></td>
+									<td><form method=\"post\" action=\"chat.php\">
+										<input type='hidden' name='chatWith' value='$from'>
+										<input type='submit' class='btn btn-success' value='Chat with Buyer' name='chat'>
+										</form></td>
 								</tr>
 								";
 							}
