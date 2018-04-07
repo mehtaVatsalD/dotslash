@@ -58,4 +58,5 @@ $uname=$_SESSION["userLogged"];
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/int.js"></script>
 <script type="text/javascript" src="chatapis/api.js"></script>
+<script type="text/javascript" src="js/restapi.js"></script>
 </html>

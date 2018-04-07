@@ -7,15 +7,15 @@ if(isset($_SESSION['notVerified']))
 if (!isset($_SESSION['userLogged'])) {
 	header('Location:login.php');
 }
-if(!isset($_POST['chat']))
+if(!isset($_GET['chat']))
 {
 	header('Location:index.php');
 }
 include_once('dbconfig.php');
 $uname=$_SESSION["userLogged"];
-if($uname==$_POST['chatWith'])
+if($uname==$_GET['chatWith'])
 	 header("Location: {$_SERVER['HTTP_REFERER']}");
-$_SESSION['chatWith']=$_POST['chatWith'];
+$_SESSION['chatWith']=$_GET['chatWith'];
 $chatWith=$_SESSION['chatWith'];
 
 ?>
@@ -37,6 +37,20 @@ $chatWith=$_SESSION['chatWith'];
 			<div class="icont">
 				<div id="sellBox">
 					<div id="sellWordDiv"><span id="sellWord">Chat With <?php echo $chatWith ?></span></div>
+					<div id="userStatus">
+						<?php
+
+						$data=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT `status` FROM `users` WHERE `uname`='$chatWith'"));
+						$data=$data["status"];
+						// echo "<script>console.log('$data')</script>";
+						if($data!="1"){
+							$time=date("h:i:sa d-m-Y",$data);
+							echo "Last Online : $time";
+						}
+						else
+							echo "Online";	
+						?>
+					</div>
 					<table id="sellTable" class="chatTable" style="width: 90%;">
 						
 					</table>
@@ -48,7 +62,7 @@ $chatWith=$_SESSION['chatWith'];
 						</tr>
 						<tr>
 							<td>
-								<button onclick="sendMsg('<?php echo $uname ?>','<?php echo $chatWith ?>')" class="btn btn-success" style="margin-bottom: 20px;">Send</button>
+								<button onclick="sendMsg('<?php echo $uname ?>','<?php echo $chatWith ?>',document.getElementById('chatTextArea').value)" class="btn btn-success" style="margin-bottom: 20px;">Send</button>
 							</td>
 						</tr>
 					</table>
@@ -64,4 +78,5 @@ $chatWith=$_SESSION['chatWith'];
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/int.js"></script>
 <script type="text/javascript" src="chatapis/api.js"></script>
+<script type="text/javascript" src="js/restapi.js"></script>
 </html>

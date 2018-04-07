@@ -909,6 +909,15 @@ div.drop ul{
 
 }
 
+#notiBell{
+	position: absolute;
+	top: 15px;
+	left: 90px;
+	font-size: 30px;
+	color:#fff;
+	cursor: pointer;
+}
+
 }
 
 #chatTextArea{
@@ -934,6 +943,7 @@ div.drop ul{
 	line-height: 0.9;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 17px;
+	white-space: pre-wrap;
 }
 
 .chatReceive pre{
@@ -942,6 +952,7 @@ div.drop ul{
 	color: #fff;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 17px;
+	white-space: pre-wrap;
 
 }
 
@@ -998,3 +1009,51 @@ div.drop ul{
 	border-color:transparent #645ced transparent transparent;
 }
 
+#userStatus{
+	height: 30px;
+	border-radius: 5px;
+	background-color: #e91e63;
+	text-align: center;
+	padding-top: 5px;
+	color: white;
+	font-size: 15px;
+}
+
+div.notiTabDiv{
+	z-index: 7;
+	position: absolute;
+	top: 9%;
+	left: 10px;
+	width: 300px;
+	max-height: 200px;
+	background-color: rgba(51,122,183,0.7);
+	display: none;
+	padding-bottom: 10px;
+}
+
+.notiTables{
+	border: 1px solid #fff;
+	width: 90%;
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+	cursor: pointer;
+
+}
+
+.notiTables.unread{
+	background-color: #607d8b;
+}
+
+.notiTables img{
+	width: 50px;
+	height: 50px;
+	padding-left:5px;
+	padding-right: 5px;
+}
+
+.notiTables .notText{
+	padding-left: 20px;
+	white-space: pre-wrap;
+	color: white;
+}

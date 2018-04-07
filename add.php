@@ -47,11 +47,31 @@ include_once('header.php');
 				$names=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT `lname`,`fname` FROM `users` WHERE `uname`='$uname'"));
 				$lname=$names['lname'];
 				$fname=$names['fname'];
+				if($each['img1']!="")
+					$img1=$each['img1'];
+				else
+					$img1="noImg.jpg";
+
+				if($each['img2']!="")
+					$img2=$each['img2'];
+				else
+					$img2="noImg.jpg";
+
+				if($each['img3']!="")
+					$img3=$each['img3'];
+				else
+					$img3="noImg.jpg";
+
+				if($each['img4']!="")
+					$img4=$each['img4'];
+				else
+					$img4="noImg.jpg";
+
 				if($userName!=$uname)
 					$showBtn="
 				<div class=\"rowp\">
 					<div class=\"icont\">	
-				<tr><td><form method=\"post\" action=\"chat.php\">
+				<tr><td><form method=\"GET\" action=\"chat.php\">
 										<input type='hidden' name='chatWith' value='$uname'>
 										<input type='submit' class='btn btn-success' value='Chat with Seller' name='chat'>
 										</form></td>
@@ -62,7 +82,7 @@ include_once('header.php');
 			    	<div id=\"addBox\" style=\"padding-bottom: 20px;\">
 								<table id=\"sellTable\" style=\"width: 90%; margin-top: 10px;\">
 									<tr>
-										<td rowspan=\"3\"><img src=\"propics/client.png\" style=\"width: 150px;height: 150px;cursor: pointer;\"></td>
+										<td rowspan=\"3\"><img src=\"sellpics/$img1\" style=\"width: 150px;height: 150px;cursor: pointer;\"></td>
 										<td><label for=\"iname\" class=\"slabels\">Item Name : </label><span class=\"starImp\"><span style=\"font-size: 20px;margin-left: 15px; color: blue\">$iname</span></td>
 									</tr>
 									<tr>
@@ -73,7 +93,7 @@ include_once('header.php');
 										<td><label for=\"iname\" class=\"slabels\">Price : </label><span style=\"font-size: 20px;margin-left: 15px; color: red;\">$price</span></td>
 									</tr>
 									<tr>
-										<td rowspan=\"1\"><img src=\"propics/client.png\" style=\"width: 40px;height: 40px;margin-left: 5px;margin-right: 5px;cursor: pointer;\"><img src=\"propics/client.png\" style=\"width: 40px;height: 40px;margin-left: 5px;margin-right: 5px;cursor: pointer;\"><img src=\"propics/client.png\" style=\"width: 40px;height: 40px;margin-left: 5px;margin-right: 5px;cursor: pointer;\"></td>
+										<td rowspan=\"1\"><img src=\"sellpics/$img2\" style=\"width: 40px;height: 40px;margin-left: 5px;margin-right: 5px;cursor: pointer;\"><img src=\"sellpics/$img3\" style=\"width: 40px;height: 40px;margin-left: 5px;margin-right: 5px;cursor: pointer;\"><img src=\"sellpics/$img4\" style=\"width: 40px;height: 40px;margin-left: 5px;margin-right: 5px;cursor: pointer;\"></td>
 										<td><label for=\"iname\" class=\"slabels\">Seller Name : </label><span style=\"font-size: 20px;margin-left: 15px;\">$fname $lname </span></td>
 									</tr>$showBtn
 									
@@ -91,4 +111,7 @@ include_once('header.php');
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/int.js"></script>
 <script type="text/javascript" src="chatapis/api.js"></script>
+<script type="text/javascript" src="js/restapi.js"></script>
 </html>
+
+<!-- sendMsg('$userName','$uname','Hey! I am interested in purchasing this item. Please share me your details'); -->

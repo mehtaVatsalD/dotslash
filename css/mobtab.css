@@ -912,5 +912,14 @@ div.drop ul{
 
 }
 
+#notiBell{
+	position: absolute;
+	top: 15px;
+	left: 50px;
+	font-size: 30px;
+	color:#fff;
+	cursor: pointer;
+}
+
 
 }
