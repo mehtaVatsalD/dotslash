@@ -58,13 +58,18 @@ if (isset($_SESSION['userLogged'])) {
 			$notifier=$notification['notifier'];
 			$category=$notification['category'];
 			$count=$notification['count'];
+			$aid=$notification['aid'];
 			if($category=="chat")
 			{
 				$locationToGo='chat.php?chatWith='.$notifier.'&chat=Chat+with+Seller';
 			}
 			else if($category=="auctionAvail")
 			{
-				$locationToGo='aution.php?for='.$notify;
+				$locationToGo='auction.php?for='.$notify.'&item='.$aid;
+			}
+			else if($category=="auction")
+			{
+				$locationToGo='activeAuctions.php';
 			}
 			//add more cate here
 
@@ -121,6 +126,12 @@ if (isset($_SESSION['userLogged'])) {
 		{
 			$bellIcon="<i id=\"notiBell\" onclick=\"readAllNoti()\" class=\"fa fa-bell\">$totalNoti</i>";
 		}
+		if($notiTables=="")
+			$notiTables="<div class='notiTablesDivParent'><table class='notiTables'>
+			<tr>
+				<td class='notText'>No Notifications Yet!</td>
+			</tr>
+		</table></div>";
 		echo "$notiTables";
 	}
 	?>

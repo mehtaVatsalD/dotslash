@@ -14,9 +14,19 @@
 			$totalCount=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT COUNT(`iid`) FROM `interested` WHERE `id`='$item'"));
 			$totalCount=$totalCount['COUNT(`iid`)'];
 			if($totalCount>=2){
-				$user=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT `uname` FROM `sell` WHERE `id`='$item'"));
-				$user=$user['uname'];
-				mysqli_query($dbase,"INSERT INTO `notifications` (`notify`,`notifier`,`notification`,`category`) VALUES ('$user','','OHO Auction','auctionAvail')");
+
+				$userNotified=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT `aid` FROM `auctions` WHERE `id`='$item'"));
+				if(empty($userNotified))
+				{
+					$data=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT `iname`,`uname`,`price` FROM `sell` WHERE `id`='$item'"));
+					$user=$data['uname'];
+					$price=$data['price'];
+					$iname=$data['iname'];
+					$notification="Your item $iname is now eligible for auction.Click to avail it.";
+					mysqli_query($dbase,"INSERT INTO `notifications` (`notify`,`notifier`,`notification`,`category`,`aid`) VALUES ('$user','','$notification','auctionAvail','$item')");
+
+					mysqli_query($dbase,"INSERT INTO `auctions` (`id`,`uname`,`basePrice`,`topPrice`) VALUES ('$item','$user','$price','$price')");
+				}
 			}
 		}
 		else
