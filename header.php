@@ -62,10 +62,22 @@ if (isset($_SESSION['userLogged'])) {
 			{
 				$locationToGo='chat.php?chatWith='.$notifier.'&chat=Chat+with+Seller';
 			}
+			else if($category=="auctionAvail")
+			{
+				$locationToGo='aution.php?for='.$notify;
+			}
 			//add more cate here
 
-			$propicNot=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT `propic` FROM `users` WHERE `uname`='$notifier'"));
-			$propicNot=$propicNot['propic'];
+			if($notifier!="")
+			{
+				$propicNot=mysqli_fetch_assoc(mysqli_query($dbase,"SELECT `propic` FROM `users` WHERE `uname`='$notifier'"));
+				$propicNot=$propicNot['propic'];
+			}
+			else
+			{
+				$notifier = "Admin";
+				$propicNot="admin.png";
+			}
 			$notificationText=$notification['notification'];
 			if($notification['readBy']=='0')
 			{
@@ -79,7 +91,7 @@ if (isset($_SESSION['userLogged'])) {
 					$notiTables.="<span class=\"countSpan\" >$count</span>";
 				}
 				$notiTables.="</td>
-						<td class=\"notText\">$notificationText</td>
+						<td class=\"notText\">$notifier : $notificationText</td>
 							</tr>
 						</table></div>
 						";
@@ -95,7 +107,7 @@ if (isset($_SESSION['userLogged'])) {
 							$notiTables.="<span class=\"countSpan\" >$count</span>";
 						}
 					$notiTables.="</td>
-						<td class=\"notText\">$notificationText</td>
+						<td class=\"notText\">$notifier : $notificationText</td>
 					</tr>
 				</table></div>
 				";
